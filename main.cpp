@@ -18,9 +18,12 @@ const int TRUCK = 1;
 const int BUS = 2;
 
 // Function prototypes
-void loadTraffic(map<string, array<list<string>, VEHICLE_TYPES>>& traffic);
-void displayTraffic(const map<string, array<list<string>, VEHICLE_TYPES>>& traffic);
-void simulateTraffic(map<string, array<list<string>, VEHICLE_TYPES>>& traffic);
+void loadTraffic(
+    map<string, array<list<string>, VEHICLE_TYPES>>& traffic);
+void displayTraffic(
+    const map<string, array<list<string>, VEHICLE_TYPES>>& traffic);
+void simulateTraffic(
+    map<string, array<list<string>, VEHICLE_TYPES>>& traffic);
 
 int main() {
     srand(time(0));
@@ -41,33 +44,21 @@ int main() {
     // Display the updated traffic conditions
     displayTraffic(traffic);
 
-    // Open traffic.txt and read the initial vehicle data
-
-    // Store each vehicle in the correct road and vehicle list
-
-    // Display the initial traffic conditions
-
-    // Run the traffic simulation for 30 time periods
-    // During each period, vehicles may enter or leave roads
-
-    // Display the updated traffic conditions after each period
-
-    // Display the final traffic conditions
-
     return 0;
 }
 
 // loadTraffic() loads the initial traffic data
 // arguments: a map containing traffic data for each road
 // returns: nothing
-void loadTraffic(map<string, array<list<string>, VEHICLE_TYPES>>& traffic) {
+void loadTraffic(
+    map<string, array<list<string>, VEHICLE_TYPES>>& traffic) {
     // Open traffic.txt using ifstream
 
     // Check if the file opened successfully
 
     // Read the road name, vehicle type, and vehicle ID
 
-    // Store the vehicle in the correct list
+    // Mockup: add one test vehicle instead of reading a file
     traffic["Main Street"][CAR].push_back("CAR001");
 
     // Continue reading until the end of the file
@@ -80,7 +71,8 @@ void loadTraffic(map<string, array<list<string>, VEHICLE_TYPES>>& traffic) {
 // displayTraffic() displays the current traffic conditions
 // arguments: a map containing traffic data for each road
 // returns: nothing
-void displayTraffic(const map<string, array<list<string>, VEHICLE_TYPES>>& traffic) {
+void displayTraffic(
+    const map<string, array<list<string>, VEHICLE_TYPES>>& traffic) {
     // Go through each road in the map
     for (auto it = traffic.begin(); it != traffic.end(); it++) {
         cout << "Road: " << it->first << endl;
@@ -113,7 +105,7 @@ void simulateTraffic(
 
     // Randomly decide whether a vehicle enters or leaves
 
-    // If a vehicle enters, add it to the correct list
+    // Mockup: simulate one truck entering Main Street
     traffic["Main Street"][TRUCK].push_back("TRUCK001");
 
     // If a vehicle leaves, remove it from the correct list
