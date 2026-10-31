@@ -1,0 +1,33 @@
+Traffic Flow Simulation
+
+Project Overview:
+    My project is a traffic flow simulation that shows how traffic changes 
+on different roads over time. The program will simulate three types of 
+vehicles: cars, trucks, and buses. The goal is to observe how vehicles enter 
+and leave roads during a certain period of time.
+
+Implementation:
+    I plan to use a std::map to store the traffic information for different 
+roads. Each road will be identified by its name, and the map's value will 
+be a std::array containing three std::list objects. These lists will store 
+cars, trucks, and buses separately.
+
+    The program will read at least 100 vehicle records from an external file 
+called traffic.txt. Each record will include a road name, vehicle type, and 
+vehicle ID. The data will be used to create the initial traffic conditions.
+
+Simulated Events:
+    The simulation will focus on two main events: vehicles entering a road 
+and vehicles leaving a road. During each time period, the program will 
+randomly add or remove vehicles from different roads.
+
+    The program will display the initial traffic conditions and show how the 
+number of vehicles changes over time.
+
+Time Periods:
+    The simulation will run for 30 time periods, with each period 
+representing one minute. This means the program will simulate 30 minutes of 
+traffic activity.
+
+    At the end, the program will display the final traffic conditions for 
+each road.
