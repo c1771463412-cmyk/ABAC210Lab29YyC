@@ -36,21 +36,22 @@ int main() {
     loadTraffic(traffic);
 
     // Display the initial traffic conditions
+    cout << "\nInitial Traffic Conditions:" << endl;
     displayTraffic(traffic);
 
-    // Run a test traffic simulation
+    // Run the traffic simulation for 30 time periods
     simulateTraffic(traffic);
 
-    // Display the updated traffic conditions
+    // Display the final traffic conditions
+    cout << "\nFinal Traffic Conditions:" << endl;
     displayTraffic(traffic);
 
     return 0;
 }
 
-
- // loadTraffic() loads the initial traffic data from a file
- // arguments: a map containing traffic data for each road
- // returns: nothing
+// loadTraffic() loads the initial traffic data from a file
+// arguments: a map containing traffic data for each road
+// returns: nothing
 void loadTraffic(
     map<string, array<list<string>, VEHICLE_TYPES>>& traffic) {
 
@@ -111,44 +112,57 @@ void displayTraffic(
     }
 }
 
- // simulateTraffic() simulates vehicles entering and leaving roads
- // arguments: a map containing traffic data for each road
- // returns: nothing
+// simulateTraffic() simulates vehicles entering and leaving roads
+// arguments: a map containing traffic data for each road
+// returns: nothing
 void simulateTraffic(
     map<string, array<list<string>, VEHICLE_TYPES>>& traffic) {
 
-    // Go through each road in the map
-    for (auto it = traffic.begin(); it != traffic.end(); it++) {
+    // Repeat the simulation for 30 time periods
+    for (int period = 1; period <= TIME_PERIODS; period++) {
 
-        // Randomly choose a vehicle type
-        int type = rand() % VEHICLE_TYPES;
+        cout << "\nTime Period " << period << endl;
+        cout << "------------------------" << endl;
 
-        // Randomly decide if a vehicle enters or leaves
-        int action = rand() % 2;
+        // Go through each road in the map
+        for (auto it = traffic.begin(); it != traffic.end(); it++) {
 
-        if (action == 0) {
+            // Randomly choose a vehicle type
+            int type = rand() % VEHICLE_TYPES;
 
-            // Add a new vehicle to the selected list
-            string id = "NEW" + to_string(rand() % 1000);
+            // Randomly decide if a vehicle enters or leaves
+            int action = rand() % 2;
 
-            it->second[type].push_back(id);
+            if (action == 0) {
 
-            cout << "Added " << id << " to "
-                 << it->first << endl;
-        }
-        else {
+                // Add a new vehicle to the selected list
+                string id = "NEW" + to_string(rand() % 1000);
 
-            // Check if the selected list is not empty
-            if (!it->second[type].empty()) {
+                it->second[type].push_back(id);
 
-                // Remove the first vehicle from the list
-                it->second[type].pop_front();
-
-                cout << "Removed a vehicle from "
+                cout << "Added " << id << " to "
                      << it->first << endl;
             }
+            else {
+
+                // Check if the selected list is not empty
+                if (!it->second[type].empty()) {
+
+                    // Remove the first vehicle from the list
+                    it->second[type].pop_front();
+
+                    cout << "Removed a vehicle from "
+                         << it->first << endl;
+                }
+            }
         }
+
+        // Display the updated traffic conditions
+        cout << "\nTraffic conditions after period "
+             << period << ":" << endl;
+
+        displayTraffic(traffic);
     }
 
-    cout << "Test traffic simulation completed." << endl;
+    cout << "Traffic simulation completed." << endl;
 }
