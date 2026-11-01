@@ -47,25 +47,43 @@ int main() {
     return 0;
 }
 
-// loadTraffic() loads the initial traffic data
-// arguments: a map containing traffic data for each road
-// returns: nothing
+
+ // loadTraffic() loads the initial traffic data from a file
+ // arguments: a map containing traffic data for each road
+ // returns: nothing
 void loadTraffic(
     map<string, array<list<string>, VEHICLE_TYPES>>& traffic) {
-    // Open traffic.txt using ifstream
+
+    // Open the input file
+    ifstream fin("traffic.txt");
 
     // Check if the file opened successfully
+    if (!fin) {
+        cout << "Error opening traffic.txt" << endl;
+        return;
+    }
+
+    string road, type, id;
 
     // Read the road name, vehicle type, and vehicle ID
+    while (fin >> road >> type >> id) {
 
-    // Mockup: add one test vehicle instead of reading a file
-    traffic["Main Street"][CAR].push_back("CAR001");
+        // Store the vehicle in the correct list
+        if (type == "CAR") {
+            traffic[road][CAR].push_back(id);
+        }
+        else if (type == "TRUCK") {
+            traffic[road][TRUCK].push_back(id);
+        }
+        else if (type == "BUS") {
+            traffic[road][BUS].push_back(id);
+        }
+    }
 
-    // Continue reading until the end of the file
+    // Close the input file
+    fin.close();
 
-    // Close the file
-
-    cout << "Test traffic data loaded." << endl;
+    cout << "Traffic data loaded." << endl;
 }
 
 // displayTraffic() displays the current traffic conditions
@@ -93,25 +111,44 @@ void displayTraffic(
     }
 }
 
-// simulateTraffic() simulates vehicles entering and leaving roads
-// arguments: a map containing traffic data for each road
-// returns: nothing
+ // simulateTraffic() simulates vehicles entering and leaving roads
+ // arguments: a map containing traffic data for each road
+ // returns: nothing
 void simulateTraffic(
     map<string, array<list<string>, VEHICLE_TYPES>>& traffic) {
 
-    // Repeat the simulation for 30 time periods
+    // Go through each road in the map
+    for (auto it = traffic.begin(); it != traffic.end(); it++) {
 
-    // Go through each road
+        // Randomly choose a vehicle type
+        int type = rand() % VEHICLE_TYPES;
 
-    // Randomly decide whether a vehicle enters or leaves
+        // Randomly decide if a vehicle enters or leaves
+        int action = rand() % 2;
 
-    // Mockup: simulate one truck entering Main Street
-    traffic["Main Street"][TRUCK].push_back("TRUCK001");
+        if (action == 0) {
 
-    // If a vehicle leaves, remove it from the correct list
+            // Add a new vehicle to the selected list
+            string id = "NEW" + to_string(rand() % 1000);
 
-    // Check that a list is not empty before removing a vehicle
+            it->second[type].push_back(id);
 
-    // Display the updated traffic conditions
+            cout << "Added " << id << " to "
+                 << it->first << endl;
+        }
+        else {
+
+            // Check if the selected list is not empty
+            if (!it->second[type].empty()) {
+
+                // Remove the first vehicle from the list
+                it->second[type].pop_front();
+
+                cout << "Removed a vehicle from "
+                     << it->first << endl;
+            }
+        }
+    }
+
     cout << "Test traffic simulation completed." << endl;
 }
