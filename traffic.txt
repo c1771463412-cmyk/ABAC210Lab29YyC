@@ -1,0 +1,12 @@
+Main_Street CAR CAR001
+Main_Street CAR CAR002
+Main_Street TRUCK TRUCK001
+Main_Street BUS BUS001
+Oak_Road CAR CAR003
+Oak_Road CAR CAR004
+Oak_Road TRUCK TRUCK002
+Oak_Road BUS BUS002
+Park_Avenue CAR CAR005
+Park_Avenue TRUCK TRUCK003
+Park_Avenue BUS BUS003
+Park_Avenue CAR CAR006

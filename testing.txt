@@ -1,0 +1,88 @@
+Traffic Flow Simulation - Alpha Release Testing
+
+Test 1: File Input
+
+Purpose:
+    Check if loadTraffic() correctly reads vehicle data from traffic.txt.
+
+Test:
+    Run the program using the 12 vehicle records in traffic.txt.
+
+Expected Result:
+    The program should load three roads: Main_Street, Oak_Road, and Park_Avenue.
+Each road should initially contain 2 cars, 1 truck, and 1 bus, for a total of 4 
+vehicles.
+
+Actual Result:
+    Passed. The program successfully loaded all 12 vehicle records from 
+traffic.txt. All three roads showed the correct vehicle counts.
+
+
+Test 2: Vehicle Entry
+
+Purpose:
+    Check if simulateTraffic() can add vehicles to the correct road and vehicle 
+list.
+
+Test:
+    Run the simulation and observe the messages when new vehicles are added.
+
+Expected Result:
+    When a vehicle enters a road, the number of vehicles in the selected category 
+should increase by 1.
+
+Actual Result:
+    Passed. New vehicles were added to the roads during the simulation. 
+The vehicle counts increased correctly.
+
+
+Test 3: Vehicle Exit
+
+Purpose:
+    Check if simulateTraffic() correctly removes vehicles from a road.
+
+Test:
+    Run the simulation and observe the messages when vehicles leave.
+
+Expected Result:
+    When a vehicle leaves a road, the number of vehicles in the selected category 
+should decrease by 1. The program should not remove vehicles from an empty list.
+
+Actual Result:
+    Passed. Vehicles were removed from the roads correctly. The counts decreased 
+by 1, and the program did not remove vehicles from empty lists.
+
+
+Test 4: Time Periods
+
+Purpose:
+    Check if the simulation runs for the correct number of time periods.
+
+Test:
+    Run the simulation and check the time period numbers.
+
+Expected Result:
+    The program should display Time Period 1 through Time Period 30 and show the 
+updated traffic conditions after each period.
+
+Actual Result:
+    Passed. The simulation ran from Time Period 1 to Time Period 30. The traffic 
+conditions were displayed after each period.
+
+
+Test 5: Final Traffic Conditions
+
+Purpose:
+    Check if displayTraffic() correctly displays the final traffic conditions.
+
+Test:
+    Compare the displayed vehicle counts with the entry and exit events during 
+the simulation.
+
+Expected Result:
+    The total number of vehicles should equal the initial number plus successful 
+entries minus successful exits. All vehicle counts should be zero or greater.
+
+Actual Result:
+    Passed. The final vehicle counts matched the changes during the simulation. 
+No negative vehicle counts appeared.
