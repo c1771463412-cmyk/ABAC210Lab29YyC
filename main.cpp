@@ -204,6 +204,12 @@ void simulateTraffic(
                     cout << "Removed " << id << " from "
                          << it->first << endl;
                 }
+                else {
+
+                    // Display a message when the selected list is empty
+                    cout << "No vehicle to remove from "
+                         << it->first << endl;
+                }
             }
         }
 

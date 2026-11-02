@@ -15,3 +15,12 @@ Bug 3: Inconsistent Vehicle ID Format
 not include leading zeros.
     Fix: Used if/else statements and string concatenation to add leading zeros to 
 new vehicle IDs.
+
+
+Bug 4: Missing Message for Empty Vehicle Lists
+    Problem: When the simulation tried to remove a vehicle from an empty list, 
+the program did not display any message.
+    Fix: Added an else statement to display a message when the selected vehicle 
+list is empty.
+
+

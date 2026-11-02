@@ -247,3 +247,23 @@ Actual Result:
 the simulation, and the final Grand Total matched Time Period 30.
 
 
+Test 14: Empty List Handling
+
+Purpose:
+    Check if simulateTraffic() handles an empty vehicle list without errors.
+
+Test:
+    Temporarily replace traffic.txt with one vehicle record and run the 
+simulation. Observe what happens when the program tries to remove a vehicle from 
+an empty list.
+
+Expected Result:
+    The program should display a message when the selected vehicle list is 
+empty. It should not crash or remove a vehicle from another list.
+
+Actual Result:
+    Passed. The program displayed a message when there was no vehicle to remove 
+and continued running without errors. The original 120-record input file was 
+restored after testing.
+
+
