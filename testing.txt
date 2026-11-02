@@ -169,3 +169,22 @@ Actual Result:
 Each vehicle type had its own increasing ID counter without duplicates.
 
 
+Test 10: Traffic Display Format
+
+Purpose:
+    Check if displayTraffic() shows traffic data in a clear table format.
+
+Test:
+    Run the simulation and observe the initial, updated, and final traffic 
+conditions.
+
+Expected Result:
+    The program should display road names, cars, trucks, buses, and total 
+vehicles in aligned columns. The values should update correctly after each time 
+period.
+
+Actual Result:
+    Passed. All 6 roads were displayed in aligned columns. The traffic counts 
+updated correctly, and the final table matched the results from Time Period 30.
+
+

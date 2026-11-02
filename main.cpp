@@ -1,6 +1,7 @@
 // COMSC-210-5293 | Lab 29 | Yuyi Chen
 
 #include <iostream>
+#include <iomanip>
 #include <fstream>
 #include <string>
 #include <map>
@@ -92,24 +93,35 @@ void loadTraffic(
 // returns: nothing
 void displayTraffic(
     const map<string, array<list<string>, VEHICLE_TYPES>>& traffic) {
+
+    cout << left
+         << setw(18) << "Road"
+         << setw(10) << "Cars"
+         << setw(10) << "Trucks"
+         << setw(10) << "Buses"
+         << setw(10) << "Total" << endl;
+
+    cout << "----------------------------------------------------------"
+         << endl;
+
     // Go through each road in the map
     for (auto it = traffic.begin(); it != traffic.end(); it++) {
-        cout << "Road: " << it->first << endl;
 
         // Count the vehicles in each category
         int cars = it->second[CAR].size();
         int trucks = it->second[TRUCK].size();
         int buses = it->second[BUS].size();
 
-        // Display the number of vehicles
-        cout << "Cars: " << cars << endl;
-        cout << "Trucks: " << trucks << endl;
-        cout << "Buses: " << buses << endl;
-
-        // Display the total number of vehicles
-        cout << "Total: " << cars + trucks + buses << endl;
-        cout << endl;
+        // Display the traffic conditions for each road
+        cout << setw(18) << it->first
+             << setw(10) << cars
+             << setw(10) << trucks
+             << setw(10) << buses
+             << setw(10) << cars + trucks + buses
+             << endl;
     }
+
+    cout << endl;
 }
 
 // simulateTraffic() simulates vehicles entering and leaving roads
