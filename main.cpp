@@ -81,6 +81,11 @@ void loadTraffic(
         else if (type == "BUS") {
             traffic[road][BUS].push_back(id);
         }
+        else {
+            // Display an error for an invalid vehicle type
+            cout << "Invalid vehicle type: " << type
+                 << " on " << road << endl;
+        }
     }
 
     // Close the input file

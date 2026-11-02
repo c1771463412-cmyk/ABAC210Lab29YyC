@@ -31,3 +31,10 @@ the input file contained different vehicle numbers.
 program now checks the set before adding a new vehicle.
 
 
+Bug 6: Invalid Vehicle Type Not Reported
+    Problem: The program silently skipped records with invalid vehicle types 
+without displaying an error message.
+    Fix: Added an else statement in loadTraffic() to display an error message 
+when an invalid vehicle type is found.
+
+

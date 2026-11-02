@@ -287,3 +287,22 @@ IDs were generated during the simulation. The program also worked correctly afte
 changing an existing vehicle ID to CAR150.
 
 
+Test 16: Invalid Vehicle Type
+
+Purpose:
+    Check if loadTraffic() handles invalid vehicle types in the input file.
+
+Test:
+    Add a temporary record with PLANE as the vehicle type and run the program 
+before and after adding input validation.
+
+Expected Result:
+    The program should display an error message for the invalid vehicle type and 
+skip that record without affecting the traffic counts.
+
+Actual Result:
+    Passed. The program displayed an error message for the invalid PLANE vehicle 
+type and skipped the record. The initial Grand Total remained 120, and the 
+simulation completed all 30 time periods.
+
+
