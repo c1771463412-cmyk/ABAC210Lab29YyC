@@ -24,3 +24,10 @@ the program did not display any message.
 list is empty.
 
 
+Bug 5: Duplicate Vehicle IDs with Different Input Data
+    Problem: Fixed starting ID numbers could cause duplicate vehicle IDs when 
+the input file contained different vehicle numbers.
+    Fix: Used a set to store all existing and newly generated vehicle IDs. The 
+program now checks the set before adding a new vehicle.
+
+

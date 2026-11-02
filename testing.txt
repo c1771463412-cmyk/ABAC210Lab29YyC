@@ -267,3 +267,23 @@ and continued running without errors. The original 120-record input file was
 restored after testing.
 
 
+Test 15: Duplicate Vehicle ID Prevention
+
+Purpose:
+    Check if the simulation prevents duplicate vehicle IDs when new vehicles are 
+added.
+
+Test:
+    Run the simulation with the original traffic data. Then temporarily change 
+an existing vehicle ID to CAR150 and run the simulation again.
+
+Expected Result:
+    Newly generated vehicle IDs should not duplicate any IDs loaded from the 
+input file or previously generated during the simulation.
+
+Actual Result:
+    Passed. The program generated unique vehicle IDs using a set. No duplicate 
+IDs were generated during the simulation. The program also worked correctly after 
+changing an existing vehicle ID to CAR150.
+
+

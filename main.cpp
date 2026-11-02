@@ -7,6 +7,7 @@
 #include <map>
 #include <array>
 #include <list>
+#include <set>
 #include <cstdlib>
 #include <ctime>
 using namespace std;
@@ -140,7 +141,23 @@ void simulateTraffic(
     map<string, array<list<string>, VEHICLE_TYPES>>& traffic) {
 
     // Keep track of new vehicle IDs for each type
-    int nextID[VEHICLE_TYPES] = {73, 31, 19};
+    int nextID[VEHICLE_TYPES] = {1, 1, 1};
+
+    // Store all vehicle IDs that have been used
+    set<string> usedIDs;
+
+    // Save the IDs of all vehicles loaded from the file
+    for (auto it = traffic.begin(); it != traffic.end(); it++) {
+
+        for (int type = 0; type < VEHICLE_TYPES; type++) {
+
+            for (auto vehicle = it->second[type].begin();
+                vehicle != it->second[type].end(); vehicle++) {
+
+                usedIDs.insert(*vehicle);
+            }
+        }
+    }
 
     // Repeat the simulation for 30 time periods
     for (int period = 1; period <= TIME_PERIODS; period++) {
@@ -162,7 +179,6 @@ void simulateTraffic(
                 // Add a new vehicle to the selected list
                 string id;
                 string prefix;
-                string number = to_string(nextID[type]);
 
                 if (type == CAR) {
                     prefix = "CAR";
@@ -174,21 +190,30 @@ void simulateTraffic(
                     prefix = "BUS";
                 }
 
-                // Add leading zeros to make the number three digits
-                if (nextID[type] < 10) {
-                    number = "00" + number;
-                }
-                else if (nextID[type] < 100) {
-                    number = "0" + number;
-                }
+                // Find a vehicle ID that has not been used
+                do {
+                    string number = to_string(nextID[type]);
 
-                id = prefix + number;
-                nextID[type]++;
+                    // Add leading zeros to make the number three digits
+                    if (nextID[type] < 10) {
+                        number = "00" + number;
+                    }
+                    else if (nextID[type] < 100) {
+                        number = "0" + number;
+                    }
+
+                    id = prefix + number;
+                    nextID[type]++;
+
+                } while (usedIDs.find(id) != usedIDs.end());
+
+                // Save the new ID so it cannot be used again
+                usedIDs.insert(id);
 
                 it->second[type].push_back(id);
 
-                cout << "Added " << id << " to "
-                     << it->first << endl;
+                cout << setw(8) << "Added" << setw(9) << id 
+                     << setw(5) << "to" << it->first << endl;
             }
             else {
 
@@ -201,8 +226,8 @@ void simulateTraffic(
                     // Remove the first vehicle from the list
                     it->second[type].pop_front();
 
-                    cout << "Removed " << id << " from "
-                         << it->first << endl;
+                    cout << setw(8) << "Removed" << setw(9) << id 
+                         << setw(5) << "from" << it->first << endl;
                 }
                 else {
 
