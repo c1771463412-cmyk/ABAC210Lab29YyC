@@ -45,3 +45,11 @@ types. For example, TRUCK999 was incorrectly added to the CAR list.
 vehicle type prefix. Invalid IDs are now skipped with an error message.
 
 
+Bug 8: Invalid Characters in Vehicle IDs
+    Problem: The program accepted vehicle IDs containing letters instead of 
+numbers after the vehicle type prefix. For example, CARABC was incorrectly added 
+to the CAR list.
+    Fix: Added validVehicleID() to check the vehicle type prefix and make sure 
+all characters after the prefix are digits.
+
+

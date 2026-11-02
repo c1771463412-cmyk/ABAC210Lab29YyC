@@ -326,3 +326,22 @@ invalid record. The initial Grand Total remained 120, and the simulation
 completed successfully.
 
 
+Test 18: Vehicle ID Number Validation
+
+Purpose:
+    Check if loadTraffic() rejects vehicle IDs containing invalid characters.
+
+Test:
+    Add a temporary record with CARABC as the vehicle ID and run the program 
+before and after adding validVehicleID().
+
+Expected Result:
+    The program should display an error message for the invalid vehicle ID and 
+skip the record. The initial Grand Total should remain 120.
+
+Actual Result:
+    Passed. The program displayed an error message for CARABC and skipped the 
+invalid record. The initial Grand Total remained 120, and the simulation 
+completed successfully.
+
+

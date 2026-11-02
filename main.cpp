@@ -26,6 +26,7 @@ void displayTraffic(
     const map<string, array<list<string>, VEHICLE_TYPES>>& traffic);
 void simulateTraffic(
     map<string, array<list<string>, VEHICLE_TYPES>>& traffic);
+bool validVehicleID(string id, string type);
 
 int main() {
     srand(time(0));
@@ -74,7 +75,7 @@ void loadTraffic(
         // Store the vehicle in the correct list
         if (type == "CAR") {
 
-            if (id.find("CAR") == 0) {
+            if (validVehicleID(id, type)) {
                 traffic[road][CAR].push_back(id);
             }
             else {
@@ -84,7 +85,7 @@ void loadTraffic(
         }
         else if (type == "TRUCK") {
 
-            if (id.find("TRUCK") == 0) {
+            if (validVehicleID(id, type)) {
                 traffic[road][TRUCK].push_back(id);
             }
             else {
@@ -94,7 +95,7 @@ void loadTraffic(
         }
         else if (type == "BUS") {
 
-            if (id.find("BUS") == 0) {
+            if (validVehicleID(id, type)) {
                 traffic[road][BUS].push_back(id);
             }
             else {
@@ -272,4 +273,42 @@ void simulateTraffic(
     }
 
     cout << "Traffic simulation completed." << endl;
+}
+
+// validVehicleID() checks the prefix and numbers of a vehicle ID
+// arguments: the vehicle ID and its vehicle type
+// returns: true if the ID is valid, otherwise false
+bool validVehicleID(string id, string type) {
+
+    int start = 0;
+
+    if (type == "CAR" || type == "BUS") {
+        start = 3;
+    }
+    else if (type == "TRUCK") {
+        start = 5;
+    }
+    else {
+        return false;
+    }
+
+    // Check if the ID starts with the correct vehicle type
+    if (id.find(type) != 0) {
+        return false;
+    }
+
+    // Check if the ID contains at least one number
+    if (id.size() <= start) {
+        return false;
+    }
+
+    // Check if every character after the prefix is a digit
+    for (int i = start; i < id.size(); i++) {
+
+        if (id[i] < '0' || id[i] > '9') {
+            return false;
+        }
+    }
+
+    return true;
 }
