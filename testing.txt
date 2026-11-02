@@ -345,3 +345,22 @@ invalid record. The initial Grand Total remained 120, and the simulation
 completed successfully.
 
 
+Test 19: Duplicate Vehicle IDs in Input File
+
+Purpose:
+    Check if loadTraffic() rejects duplicate vehicle IDs from the input file.
+
+Test:
+    Add a temporary record using an existing vehicle ID and run the program 
+before and after adding duplicate ID validation.
+
+Expected Result:
+    The program should display an error message for the duplicate ID and skip 
+the record. The initial Grand Total should remain 120.
+
+Actual Result:
+    Passed. The program detected the duplicate vehicle ID and displayed an error 
+message. The duplicate record was skipped, and the initial Grand Total remained 
+120.
+
+

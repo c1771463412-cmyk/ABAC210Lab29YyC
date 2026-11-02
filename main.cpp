@@ -68,35 +68,34 @@ void loadTraffic(
     }
 
     string road, type, id;
+    // Store vehicle IDs that have already been loaded
+    set<string> loadedIDs;
 
     // Read the road name, vehicle type, and vehicle ID
     while (fin >> road >> type >> id) {
 
-        // Store the vehicle in the correct list
-        if (type == "CAR") {
+        // Check if the vehicle ID is already in the file
+        if (loadedIDs.find(id) != loadedIDs.end()) {
 
-            if (validVehicleID(id, type)) {
-                traffic[road][CAR].push_back(id);
-            }
-            else {
-                cout << "Invalid vehicle ID: " << id
-                     << " for " << type << endl;
-            }
+            cout << "Duplicate vehicle ID: " << id << endl;
         }
-        else if (type == "TRUCK") {
+        else if (type == "CAR" || type == "TRUCK" || type == "BUS") {
 
+            // Check if the vehicle ID matches its type
             if (validVehicleID(id, type)) {
-                traffic[road][TRUCK].push_back(id);
-            }
-            else {
-                cout << "Invalid vehicle ID: " << id
-                     << " for " << type << endl;
-            }
-        }
-        else if (type == "BUS") {
 
-            if (validVehicleID(id, type)) {
-                traffic[road][BUS].push_back(id);
+                if (type == "CAR") {
+                    traffic[road][CAR].push_back(id);
+                }
+                else if (type == "TRUCK") {
+                    traffic[road][TRUCK].push_back(id);
+                }
+                else {
+                    traffic[road][BUS].push_back(id);
+                }
+
+                // Save the ID after the vehicle is accepted
+                loadedIDs.insert(id);
             }
             else {
                 cout << "Invalid vehicle ID: " << id
@@ -104,7 +103,6 @@ void loadTraffic(
             }
         }
         else {
-            // Display an error for an invalid vehicle type
             cout << "Invalid vehicle type: " << type
                  << " on " << road << endl;
         }

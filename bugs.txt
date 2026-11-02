@@ -53,3 +53,10 @@ to the CAR list.
 all characters after the prefix are digits.
 
 
+Bug 9: Duplicate Vehicle IDs in Input File
+    Problem: The program accepted duplicate vehicle IDs from traffic.txt, 
+allowing the same vehicle ID to appear more than once.
+    Fix: Added a set in loadTraffic() to track accepted vehicle IDs and reject 
+duplicate IDs with an error message.
+
+
