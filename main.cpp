@@ -94,6 +94,9 @@ void loadTraffic(
 void displayTraffic(
     const map<string, array<list<string>, VEHICLE_TYPES>>& traffic) {
 
+    // Store the total number of vehicles on all roads
+    int grandTotal = 0;
+
     cout << left
          << setw(18) << "Road"
          << setw(10) << "Cars"
@@ -112,6 +115,9 @@ void displayTraffic(
         int trucks = it->second[TRUCK].size();
         int buses = it->second[BUS].size();
 
+        // Add the vehicles on this road to the total
+        grandTotal += cars + trucks + buses;
+
         // Display the traffic conditions for each road
         cout << setw(18) << it->first
              << setw(10) << cars
@@ -121,6 +127,9 @@ void displayTraffic(
              << endl;
     }
 
+    cout << "----------------------------------------------------------"
+         << endl;
+    cout << "Grand Total: " << grandTotal << endl;
     cout << endl;
 }
 

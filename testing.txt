@@ -227,3 +227,23 @@ Actual Result:
 three-digit formatting.
 
 
+Test 13: Grand Total Calculation
+
+Purpose:
+    Check if displayTraffic() correctly calculates the total number of vehicles 
+across all roads.
+
+Test:
+    Run the simulation and compare the Grand Total with the sum of the vehicle 
+counts from all 6 roads.
+
+Expected Result:
+    The initial Grand Total should be 120. After each time period, the Grand 
+Total should match the sum of all road totals. The final Grand Total should 
+match the total from Time Period 30.
+
+Actual Result:
+    Passed. The initial Grand Total was 120. The totals updated correctly during 
+the simulation, and the final Grand Total matched Time Period 30.
+
+
