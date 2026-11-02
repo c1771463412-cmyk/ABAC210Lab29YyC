@@ -1,4 +1,9 @@
-Traffic Flow Simulation - Alpha Release Testing
+Traffic Flow Simulation - Testing
+
+========================================
+Alpha Release Testing (Lab 30)
+========================================
+
 
 Test 1: File Input
 
@@ -86,3 +91,81 @@ entries minus successful exits. All vehicle counts should be zero or greater.
 Actual Result:
     Passed. The final vehicle counts matched the changes during the simulation. 
 No negative vehicle counts appeared.
+
+
+========================================
+Beta Release Testing (Lab 31)
+========================================
+
+
+Test 6: Extended File Input
+
+Purpose:
+    Check if loadTraffic() can correctly read 120 vehicle records from 
+traffic.txt.
+
+Test:
+    Run the program using the updated traffic.txt file containing 120 records 
+across 6 roads.
+
+Expected Result:
+    The program should load 6 roads. Each road should contain 12 cars, 5 trucks, 
+and 3 buses, for a total of 20 vehicles. The total number of vehicles should be 
+120.
+
+Actual Result:
+    Passed. The program successfully loaded all 120 vehicle records. All 6 roads 
+showed the correct initial vehicle counts.
+
+
+Test 7: Simulation with Extended Data
+
+Purpose:
+    Check if simulateTraffic() works correctly with the larger traffic data file.
+
+Test:
+    Run the simulation using all 120 vehicle records and observe the traffic 
+changes.
+
+Expected Result:
+    The simulation should run for 30 time periods. Vehicles should enter and 
+leave the 6 roads, and the traffic counts should update correctly.
+
+Actual Result:
+    Passed. The simulation ran through all 30 time periods with 6 roads. Vehicle 
+entry and exit events worked, and the traffic counts updated correctly.
+
+
+Test 8: Unique Vehicle IDs
+
+Purpose:
+    Check if newly added vehicles receive unique IDs.
+
+Test:
+    Run the simulation and observe the IDs of newly added vehicles.
+
+Expected Result:
+    Each new vehicle should receive a different ID. The IDs should increase in 
+order, starting from NEW1.
+
+Actual Result:
+    Passed. All newly added vehicles received unique IDs in increasing order.
+
+
+Test 9: Vehicle Type IDs
+
+Purpose:
+    Check if newly added vehicles receive IDs based on their vehicle types.
+
+Test:
+    Run the simulation and observe the IDs of newly added cars, trucks, and buses.
+
+Expected Result:
+    New cars should start from CAR73, trucks from TRUCK31, and buses from BUS19. 
+Each vehicle type should have its own increasing ID counter without duplicates.
+
+Actual Result:
+    Passed. New vehicles received the correct CAR, TRUCK, and BUS prefixes.
+Each vehicle type had its own increasing ID counter without duplicates.
+
+

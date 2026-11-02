@@ -118,8 +118,8 @@ void displayTraffic(
 void simulateTraffic(
     map<string, array<list<string>, VEHICLE_TYPES>>& traffic) {
 
-    // Keep track of new vehicle IDs
-    int nextID = 1;
+    // Keep track of new vehicle IDs for each type
+    int nextID[VEHICLE_TYPES] = {73, 31, 19};
 
     // Repeat the simulation for 30 time periods
     for (int period = 1; period <= TIME_PERIODS; period++) {
@@ -139,8 +139,19 @@ void simulateTraffic(
             if (action == 0) {
 
                 // Add a new vehicle to the selected list
-                string id = "NEW" + to_string(nextID);
-                nextID++;
+                string id;
+
+                if (type == CAR) {
+                    id = "CAR" + to_string(nextID[CAR]);
+                }
+                else if (type == TRUCK) {
+                    id = "TRUCK" + to_string(nextID[TRUCK]);
+                }
+                else {
+                    id = "BUS" + to_string(nextID[BUS]);
+                }
+
+                nextID[type]++;
 
                 it->second[type].push_back(id);
 
