@@ -1,4 +1,4 @@
-// COMSC-210-5293 | Lab 29 | Yuyi Chen
+// COMSC-210-5293 | Lab 31 Beta Release | Yuyi Chen
 
 #include <iostream>
 #include <iomanip>
