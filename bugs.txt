@@ -38,3 +38,10 @@ without displaying an error message.
 when an invalid vehicle type is found.
 
 
+Bug 7: Vehicle ID Does Not Match Vehicle Type
+    Problem: The program accepted vehicle IDs that did not match their vehicle 
+types. For example, TRUCK999 was incorrectly added to the CAR list.
+    Fix: Used string.find() to check if each vehicle ID starts with the correct 
+vehicle type prefix. Invalid IDs are now skipped with an error message.
+
+

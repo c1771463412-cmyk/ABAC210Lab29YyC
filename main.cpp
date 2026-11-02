@@ -73,13 +73,34 @@ void loadTraffic(
 
         // Store the vehicle in the correct list
         if (type == "CAR") {
-            traffic[road][CAR].push_back(id);
+
+            if (id.find("CAR") == 0) {
+                traffic[road][CAR].push_back(id);
+            }
+            else {
+                cout << "Invalid vehicle ID: " << id
+                     << " for " << type << endl;
+            }
         }
         else if (type == "TRUCK") {
-            traffic[road][TRUCK].push_back(id);
+
+            if (id.find("TRUCK") == 0) {
+                traffic[road][TRUCK].push_back(id);
+            }
+            else {
+                cout << "Invalid vehicle ID: " << id
+                     << " for " << type << endl;
+            }
         }
         else if (type == "BUS") {
-            traffic[road][BUS].push_back(id);
+
+            if (id.find("BUS") == 0) {
+                traffic[road][BUS].push_back(id);
+            }
+            else {
+                cout << "Invalid vehicle ID: " << id
+                     << " for " << type << endl;
+            }
         }
         else {
             // Display an error for an invalid vehicle type

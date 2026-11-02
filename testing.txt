@@ -306,3 +306,23 @@ type and skipped the record. The initial Grand Total remained 120, and the
 simulation completed all 30 time periods.
 
 
+Test 17: Vehicle ID and Type Validation
+
+Purpose:
+    Check if loadTraffic() rejects vehicle IDs that do not match their vehicle 
+types.
+
+Test:
+    Add a temporary record with CAR as the vehicle type and TRUCK999 as the 
+vehicle ID. Run the program before and after adding validation.
+
+Expected Result:
+    The program should display an error message for the mismatched vehicle ID 
+and skip the record. The initial Grand Total should remain 120.
+
+Actual Result:
+    Passed. The program displayed an error message for TRUCK999 and skipped the 
+invalid record. The initial Grand Total remained 120, and the simulation 
+completed successfully.
+
+
