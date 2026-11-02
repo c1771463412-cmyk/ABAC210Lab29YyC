@@ -188,3 +188,21 @@ Actual Result:
 updated correctly, and the final table matched the results from Time Period 30.
 
 
+Test 11: Vehicle Exit Information
+
+Purpose:
+    Check if simulateTraffic() displays the correct vehicle ID when a vehicle 
+leaves a road.
+
+Test:
+    Run the simulation and observe the vehicle exit messages. Compare the 
+removed vehicle IDs with the vehicle types and traffic counts.
+
+Expected Result:
+    Each exit message should show the ID of the removed vehicle and its road. 
+The vehicle count for the selected type should decrease by 1.
+
+Actual Result:
+    Passed. Vehicle exit messages displayed the removed vehicle IDs and road 
+names. The traffic counts decreased correctly.
+

@@ -175,10 +175,13 @@ void simulateTraffic(
                 // Check if the selected list is not empty
                 if (!it->second[type].empty()) {
 
+                    // Get the ID of the first vehicle
+                    string id = it->second[type].front();
+
                     // Remove the first vehicle from the list
                     it->second[type].pop_front();
 
-                    cout << "Removed a vehicle from "
+                    cout << "Removed " << id << " from "
                          << it->first << endl;
                 }
             }
