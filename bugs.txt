@@ -1,0 +1,3 @@
+Bug 1: Duplicate Vehicle IDs
+Problem: Randomly generated vehicle IDs could repeat.
+Fix: Replaced random IDs with an increasing counter.
