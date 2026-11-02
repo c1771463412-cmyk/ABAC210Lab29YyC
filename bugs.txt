@@ -1,10 +1,17 @@
 Bug 1: Duplicate Vehicle IDs
-Problem: Randomly generated vehicle IDs could repeat.
-Fix: Replaced random IDs with an increasing counter.
+    Problem: Randomly generated vehicle IDs could repeat.
+    Fix: Replaced random IDs with an increasing counter.
+
 
 Bug 2: Vehicle IDs Do Not Show Vehicle Types
-Problem: The NEW prefix did not show whether the vehicle was a car, truck, or 
+    Problem: The NEW prefix did not show whether the vehicle was a car, truck, or 
 bus.
-Fix: Added separate counters for each vehicle type and changed the IDs to use 
+    Fix: Added separate counters for each vehicle type and changed the IDs to use 
 CAR, TRUCK, and BUS prefixes.
 
+
+Bug 3: Inconsistent Vehicle ID Format
+    Problem: Initial vehicle IDs used three digits, but newly generated IDs did 
+not include leading zeros.
+    Fix: Used if/else statements and string concatenation to add leading zeros to 
+new vehicle IDs.

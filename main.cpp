@@ -152,17 +152,28 @@ void simulateTraffic(
 
                 // Add a new vehicle to the selected list
                 string id;
+                string prefix;
+                string number = to_string(nextID[type]);
 
                 if (type == CAR) {
-                    id = "CAR" + to_string(nextID[CAR]);
+                    prefix = "CAR";
                 }
                 else if (type == TRUCK) {
-                    id = "TRUCK" + to_string(nextID[TRUCK]);
+                    prefix = "TRUCK";
                 }
                 else {
-                    id = "BUS" + to_string(nextID[BUS]);
+                    prefix = "BUS";
                 }
 
+                // Add leading zeros to make the number three digits
+                if (nextID[type] < 10) {
+                    number = "00" + number;
+                }
+                else if (nextID[type] < 100) {
+                    number = "0" + number;
+                }
+
+                id = prefix + number;
                 nextID[type]++;
 
                 it->second[type].push_back(id);

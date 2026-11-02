@@ -206,3 +206,24 @@ Actual Result:
     Passed. Vehicle exit messages displayed the removed vehicle IDs and road 
 names. The traffic counts decreased correctly.
 
+
+Test 12: Vehicle ID Formatting
+
+Purpose:
+    Check if newly generated vehicle IDs use the same format as the initial 
+vehicle IDs.
+
+Test:
+    Run the simulation and compare the IDs of newly added vehicles with the IDs 
+loaded from traffic.txt.
+
+Expected Result:
+    All vehicle IDs should use the correct CAR, TRUCK, or BUS prefix followed by 
+at least three digits. New vehicles should start from CAR073, TRUCK031, and 
+BUS019.
+
+Actual Result:
+    Passed. Newly generated vehicle IDs used the correct prefixes and 
+three-digit formatting.
+
+
