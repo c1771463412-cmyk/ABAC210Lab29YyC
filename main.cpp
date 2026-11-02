@@ -20,7 +20,7 @@ const int TRUCK = 1;
 const int BUS = 2;
 
 // Function prototypes
-void loadTraffic(
+bool loadTraffic(
     map<string, array<list<string>, VEHICLE_TYPES>>& traffic);
 void displayTraffic(
     const map<string, array<list<string>, VEHICLE_TYPES>>& traffic);
@@ -36,7 +36,9 @@ int main() {
     map<string, array<list<string>, VEHICLE_TYPES>> traffic;
 
     // Load the initial traffic data
-    loadTraffic(traffic);
+    if (!loadTraffic(traffic)) {
+        return 1;
+    }
 
     // Display the initial traffic conditions
     cout << "\nInitial Traffic Conditions:" << endl;
@@ -54,8 +56,8 @@ int main() {
 
 // loadTraffic() loads the initial traffic data from a file
 // arguments: a map containing traffic data for each road
-// returns: nothing
-void loadTraffic(
+// returns: true if data was loaded, otherwise false
+bool loadTraffic(
     map<string, array<list<string>, VEHICLE_TYPES>>& traffic) {
 
     // Open the input file
@@ -64,9 +66,11 @@ void loadTraffic(
     // Check if the file opened successfully
     if (!fin) {
         cout << "Error opening traffic.txt" << endl;
-        return;
+        return false;
     }
 
+    // Count the number of valid vehicles loaded
+    int loadedCount = 0;
     string road, type, id;
     // Store vehicle IDs that have already been loaded
     set<string> loadedIDs;
@@ -96,6 +100,7 @@ void loadTraffic(
 
                 // Save the ID after the vehicle is accepted
                 loadedIDs.insert(id);
+                loadedCount++;
             }
             else {
                 cout << "Invalid vehicle ID: " << id
@@ -111,7 +116,14 @@ void loadTraffic(
     // Close the input file
     fin.close();
 
+    // Check if any valid vehicles were loaded
+    if (loadedCount == 0) {
+        cout << "Error: No valid traffic data found." << endl;
+        return false;
+    }
+
     cout << "Traffic data loaded." << endl;
+    return true;
 }
 
 // displayTraffic() displays the current traffic conditions

@@ -364,3 +364,23 @@ message. The duplicate record was skipped, and the initial Grand Total remained
 120.
 
 
+Test 20: Empty Input File
+
+Purpose:
+    Check if the program handles an empty input file correctly.
+
+Test:
+    Clear the contents of traffic.txt and run the program before and after 
+adding the empty file check. Restore the original 120 records and run the program 
+again.
+
+Expected Result:
+    The program should display an error message and stop the simulation when no 
+valid traffic data is loaded. It should run normally after the original input 
+file is restored.
+
+Actual Result:
+    Passed. The program detected the empty input file, displayed an error 
+message, and stopped before starting the simulation. After restoring the original 
+traffic data, the program loaded 120 vehicles and completed all 30 time periods 
+successfully.

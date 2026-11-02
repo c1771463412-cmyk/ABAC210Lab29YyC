@@ -60,3 +60,9 @@ allowing the same vehicle ID to appear more than once.
 duplicate IDs with an error message.
 
 
+Bug 10: Empty Input File Not Detected
+    Problem: The program displayed "Traffic data loaded." and continued the 
+simulation even when traffic.txt was empty.
+    Fix: Changed loadTraffic() to return a bool and added a counter to check 
+whether any valid vehicles were loaded. The program now stops if no valid traffic 
+data is found.
