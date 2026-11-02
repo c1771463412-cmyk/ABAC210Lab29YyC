@@ -1,0 +1,68 @@
+Bug 1: Duplicate Vehicle IDs
+    Problem: Randomly generated vehicle IDs could repeat.
+    Fix: Replaced random IDs with an increasing counter.
+
+
+Bug 2: Vehicle IDs Do Not Show Vehicle Types
+    Problem: The NEW prefix did not show whether the vehicle was a car, truck, or 
+bus.
+    Fix: Added separate counters for each vehicle type and changed the IDs to use 
+CAR, TRUCK, and BUS prefixes.
+
+
+Bug 3: Inconsistent Vehicle ID Format
+    Problem: Initial vehicle IDs used three digits, but newly generated IDs did 
+not include leading zeros.
+    Fix: Used if/else statements and string concatenation to add leading zeros to 
+new vehicle IDs.
+
+
+Bug 4: Missing Message for Empty Vehicle Lists
+    Problem: When the simulation tried to remove a vehicle from an empty list, 
+the program did not display any message.
+    Fix: Added an else statement to display a message when the selected vehicle 
+list is empty.
+
+
+Bug 5: Duplicate Vehicle IDs with Different Input Data
+    Problem: Fixed starting ID numbers could cause duplicate vehicle IDs when 
+the input file contained different vehicle numbers.
+    Fix: Used a set to store all existing and newly generated vehicle IDs. The 
+program now checks the set before adding a new vehicle.
+
+
+Bug 6: Invalid Vehicle Type Not Reported
+    Problem: The program silently skipped records with invalid vehicle types 
+without displaying an error message.
+    Fix: Added an else statement in loadTraffic() to display an error message 
+when an invalid vehicle type is found.
+
+
+Bug 7: Vehicle ID Does Not Match Vehicle Type
+    Problem: The program accepted vehicle IDs that did not match their vehicle 
+types. For example, TRUCK999 was incorrectly added to the CAR list.
+    Fix: Used string.find() to check if each vehicle ID starts with the correct 
+vehicle type prefix. Invalid IDs are now skipped with an error message.
+
+
+Bug 8: Invalid Characters in Vehicle IDs
+    Problem: The program accepted vehicle IDs containing letters instead of 
+numbers after the vehicle type prefix. For example, CARABC was incorrectly added 
+to the CAR list.
+    Fix: Added validVehicleID() to check the vehicle type prefix and make sure 
+all characters after the prefix are digits.
+
+
+Bug 9: Duplicate Vehicle IDs in Input File
+    Problem: The program accepted duplicate vehicle IDs from traffic.txt, 
+allowing the same vehicle ID to appear more than once.
+    Fix: Added a set in loadTraffic() to track accepted vehicle IDs and reject 
+duplicate IDs with an error message.
+
+
+Bug 10: Empty Input File Not Detected
+    Problem: The program displayed "Traffic data loaded." and continued the 
+simulation even when traffic.txt was empty.
+    Fix: Changed loadTraffic() to return a bool and added a counter to check 
+whether any valid vehicles were loaded. The program now stops if no valid traffic 
+data is found.

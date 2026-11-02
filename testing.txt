@@ -1,4 +1,9 @@
-Traffic Flow Simulation - Alpha Release Testing
+Traffic Flow Simulation - Testing
+
+========================================
+Alpha Release Testing (Lab 30)
+========================================
+
 
 Test 1: File Input
 
@@ -86,3 +91,296 @@ entries minus successful exits. All vehicle counts should be zero or greater.
 Actual Result:
     Passed. The final vehicle counts matched the changes during the simulation. 
 No negative vehicle counts appeared.
+
+
+========================================
+Beta Release Testing (Lab 31)
+========================================
+
+
+Test 6: Extended File Input
+
+Purpose:
+    Check if loadTraffic() can correctly read 120 vehicle records from 
+traffic.txt.
+
+Test:
+    Run the program using the updated traffic.txt file containing 120 records 
+across 6 roads.
+
+Expected Result:
+    The program should load 6 roads. Each road should contain 12 cars, 5 trucks, 
+and 3 buses, for a total of 20 vehicles. The total number of vehicles should be 
+120.
+
+Actual Result:
+    Passed. The program successfully loaded all 120 vehicle records. All 6 roads 
+showed the correct initial vehicle counts.
+
+
+Test 7: Simulation with Extended Data
+
+Purpose:
+    Check if simulateTraffic() works correctly with the larger traffic data file.
+
+Test:
+    Run the simulation using all 120 vehicle records and observe the traffic 
+changes.
+
+Expected Result:
+    The simulation should run for 30 time periods. Vehicles should enter and 
+leave the 6 roads, and the traffic counts should update correctly.
+
+Actual Result:
+    Passed. The simulation ran through all 30 time periods with 6 roads. Vehicle 
+entry and exit events worked, and the traffic counts updated correctly.
+
+
+Test 8: Unique Vehicle IDs
+
+Purpose:
+    Check if newly added vehicles receive unique IDs.
+
+Test:
+    Run the simulation and observe the IDs of newly added vehicles.
+
+Expected Result:
+    Each new vehicle should receive a different ID. The IDs should increase in 
+order, starting from NEW1.
+
+Actual Result:
+    Passed. All newly added vehicles received unique IDs in increasing order.
+
+
+Test 9: Vehicle Type IDs
+
+Purpose:
+    Check if newly added vehicles receive IDs based on their vehicle types.
+
+Test:
+    Run the simulation and observe the IDs of newly added cars, trucks, and buses.
+
+Expected Result:
+    New cars should start from CAR73, trucks from TRUCK31, and buses from BUS19. 
+Each vehicle type should have its own increasing ID counter without duplicates.
+
+Actual Result:
+    Passed. New vehicles received the correct CAR, TRUCK, and BUS prefixes.
+Each vehicle type had its own increasing ID counter without duplicates.
+
+
+Test 10: Traffic Display Format
+
+Purpose:
+    Check if displayTraffic() shows traffic data in a clear table format.
+
+Test:
+    Run the simulation and observe the initial, updated, and final traffic 
+conditions.
+
+Expected Result:
+    The program should display road names, cars, trucks, buses, and total 
+vehicles in aligned columns. The values should update correctly after each time 
+period.
+
+Actual Result:
+    Passed. All 6 roads were displayed in aligned columns. The traffic counts 
+updated correctly, and the final table matched the results from Time Period 30.
+
+
+Test 11: Vehicle Exit Information
+
+Purpose:
+    Check if simulateTraffic() displays the correct vehicle ID when a vehicle 
+leaves a road.
+
+Test:
+    Run the simulation and observe the vehicle exit messages. Compare the 
+removed vehicle IDs with the vehicle types and traffic counts.
+
+Expected Result:
+    Each exit message should show the ID of the removed vehicle and its road. 
+The vehicle count for the selected type should decrease by 1.
+
+Actual Result:
+    Passed. Vehicle exit messages displayed the removed vehicle IDs and road 
+names. The traffic counts decreased correctly.
+
+
+Test 12: Vehicle ID Formatting
+
+Purpose:
+    Check if newly generated vehicle IDs use the same format as the initial 
+vehicle IDs.
+
+Test:
+    Run the simulation and compare the IDs of newly added vehicles with the IDs 
+loaded from traffic.txt.
+
+Expected Result:
+    All vehicle IDs should use the correct CAR, TRUCK, or BUS prefix followed by 
+at least three digits. New vehicles should start from CAR073, TRUCK031, and 
+BUS019.
+
+Actual Result:
+    Passed. Newly generated vehicle IDs used the correct prefixes and 
+three-digit formatting.
+
+
+Test 13: Grand Total Calculation
+
+Purpose:
+    Check if displayTraffic() correctly calculates the total number of vehicles 
+across all roads.
+
+Test:
+    Run the simulation and compare the Grand Total with the sum of the vehicle 
+counts from all 6 roads.
+
+Expected Result:
+    The initial Grand Total should be 120. After each time period, the Grand 
+Total should match the sum of all road totals. The final Grand Total should 
+match the total from Time Period 30.
+
+Actual Result:
+    Passed. The initial Grand Total was 120. The totals updated correctly during 
+the simulation, and the final Grand Total matched Time Period 30.
+
+
+Test 14: Empty List Handling
+
+Purpose:
+    Check if simulateTraffic() handles an empty vehicle list without errors.
+
+Test:
+    Temporarily replace traffic.txt with one vehicle record and run the 
+simulation. Observe what happens when the program tries to remove a vehicle from 
+an empty list.
+
+Expected Result:
+    The program should display a message when the selected vehicle list is 
+empty. It should not crash or remove a vehicle from another list.
+
+Actual Result:
+    Passed. The program displayed a message when there was no vehicle to remove 
+and continued running without errors. The original 120-record input file was 
+restored after testing.
+
+
+Test 15: Duplicate Vehicle ID Prevention
+
+Purpose:
+    Check if the simulation prevents duplicate vehicle IDs when new vehicles are 
+added.
+
+Test:
+    Run the simulation with the original traffic data. Then temporarily change 
+an existing vehicle ID to CAR150 and run the simulation again.
+
+Expected Result:
+    Newly generated vehicle IDs should not duplicate any IDs loaded from the 
+input file or previously generated during the simulation.
+
+Actual Result:
+    Passed. The program generated unique vehicle IDs using a set. No duplicate 
+IDs were generated during the simulation. The program also worked correctly after 
+changing an existing vehicle ID to CAR150.
+
+
+Test 16: Invalid Vehicle Type
+
+Purpose:
+    Check if loadTraffic() handles invalid vehicle types in the input file.
+
+Test:
+    Add a temporary record with PLANE as the vehicle type and run the program 
+before and after adding input validation.
+
+Expected Result:
+    The program should display an error message for the invalid vehicle type and 
+skip that record without affecting the traffic counts.
+
+Actual Result:
+    Passed. The program displayed an error message for the invalid PLANE vehicle 
+type and skipped the record. The initial Grand Total remained 120, and the 
+simulation completed all 30 time periods.
+
+
+Test 17: Vehicle ID and Type Validation
+
+Purpose:
+    Check if loadTraffic() rejects vehicle IDs that do not match their vehicle 
+types.
+
+Test:
+    Add a temporary record with CAR as the vehicle type and TRUCK999 as the 
+vehicle ID. Run the program before and after adding validation.
+
+Expected Result:
+    The program should display an error message for the mismatched vehicle ID 
+and skip the record. The initial Grand Total should remain 120.
+
+Actual Result:
+    Passed. The program displayed an error message for TRUCK999 and skipped the 
+invalid record. The initial Grand Total remained 120, and the simulation 
+completed successfully.
+
+
+Test 18: Vehicle ID Number Validation
+
+Purpose:
+    Check if loadTraffic() rejects vehicle IDs containing invalid characters.
+
+Test:
+    Add a temporary record with CARABC as the vehicle ID and run the program 
+before and after adding validVehicleID().
+
+Expected Result:
+    The program should display an error message for the invalid vehicle ID and 
+skip the record. The initial Grand Total should remain 120.
+
+Actual Result:
+    Passed. The program displayed an error message for CARABC and skipped the 
+invalid record. The initial Grand Total remained 120, and the simulation 
+completed successfully.
+
+
+Test 19: Duplicate Vehicle IDs in Input File
+
+Purpose:
+    Check if loadTraffic() rejects duplicate vehicle IDs from the input file.
+
+Test:
+    Add a temporary record using an existing vehicle ID and run the program 
+before and after adding duplicate ID validation.
+
+Expected Result:
+    The program should display an error message for the duplicate ID and skip 
+the record. The initial Grand Total should remain 120.
+
+Actual Result:
+    Passed. The program detected the duplicate vehicle ID and displayed an error 
+message. The duplicate record was skipped, and the initial Grand Total remained 
+120.
+
+
+Test 20: Empty Input File
+
+Purpose:
+    Check if the program handles an empty input file correctly.
+
+Test:
+    Clear the contents of traffic.txt and run the program before and after 
+adding the empty file check. Restore the original 120 records and run the program 
+again.
+
+Expected Result:
+    The program should display an error message and stop the simulation when no 
+valid traffic data is loaded. It should run normally after the original input 
+file is restored.
+
+Actual Result:
+    Passed. The program detected the empty input file, displayed an error 
+message, and stopped before starting the simulation. After restoring the original 
+traffic data, the program loaded 120 vehicles and completed all 30 time periods 
+successfully.
